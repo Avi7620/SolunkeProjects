@@ -397,7 +397,7 @@
                     <h5>Feel Free to Contact Us!</h5>
                 </aside>
                 <form
-                    action="https://docs.google.com/forms/d/e/1FAIpQLSez4HodbnMJtceQqsunCyfn_YfxhhDXXzi2TGJ9KmiJw_v51w/formResponse"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLSfe5P-4TyitogZvoVnUZxhgiF4iYz62bHjgR5PoPJs9qF_g-w/formResponse"
                     target="_self" id="bootstrapForm" method="POST">
                    
 
@@ -406,7 +406,7 @@
                     <fieldset>
                         <legend for="1633920210">Name</legend>
                         <div class="form-group">
-                            <input id="2005620554" type="text" name="entry.2005620554" class="form-control" required>
+                            <input id="2005620554" type="text" name="entry.793243352" class="form-control" required>
                         </div>
                     </fieldset>
 
@@ -415,7 +415,7 @@
                     <fieldset>
                         <legend for="227649005">Email</legend>
                         <div class="form-group">
-                            <input id="1045781291" type="text" name="entry.1045781291" class="form-control" required>
+                            <input id="1045781291" type="text" name="entry.1924306679" class="form-control" required>
                         </div>
                     </fieldset>
 
@@ -424,7 +424,7 @@
                     <fieldset>
                         <legend for="790080973">Address</legend>
                         <div class="form-group">
-                            <textarea id="1065046570" name="entry.1065046570" class="form-control" required></textarea>
+                            <textarea id="1065046570" name="entry.960426819" class="form-control" required></textarea>
                         </div>
                     </fieldset>
 
@@ -433,7 +433,7 @@
                     <fieldset>
                         <legend for="1770822543">Phone number</legend>
                         <div class="form-group">
-                            <input id="1166974658" type="text" name="entry.1166974658" class="form-control">
+                            <input id="1166974658" type="text" name="entry.1992016356" class="form-control">
                         </div>
                     </fieldset>
 
@@ -442,7 +442,7 @@
                     <fieldset>
                         <legend for="1846923513">Message</legend>
                         <div class="form-group">
-                            <textarea id="839337160" name="entry.839337160" class="form-control"></textarea>
+                            <textarea id="839337160" name="entry.1569604341" class="form-control"></textarea>
                         </div>
                     </fieldset>
 
@@ -462,23 +462,26 @@
             </div>
         </div>
     </section>
-    <script>
-        //
-   $('#bootstrapForm').submit(function (event) {
-    event.preventDefault()
-    var extraData = {}
-    $('#bootstrapForm').ajaxSubmit({
-        data: extraData,
-        dataType: 'jsonp',  // This won't really work. It's just to use a GET instead of a POST to allow cookies from different domain.
-        error: function () {
-            // Submit of form should be successful but JSONP callback will fail because Google Forms
-            // does not support it, so this is handled as a failure.
-            alert('Form Submitted. Thanks.')
-            // You can also redirect the user to a custom thank-you page:
-            // window.location = 'http://www.mydomain.com/thankyoupage.html'
-        }
-    })
-})   </script>
+   <script>
+document.getElementById("bootstrapForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // stop normal submission
+
+    var form = e.target;
+    var data = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: data,
+        mode: 'no-cors'
+    }).then(() => {
+        alert("✅ Thank you! Your form has been submitted successfully.");
+        form.reset();
+    }).catch(() => {
+        alert("❌ There was an error. Please try again.");
+    });
+});
+</script>
+
 
 
     <section id="sec-6">
